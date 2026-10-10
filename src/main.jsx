@@ -1,70 +1,756 @@
-import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { ArrowDownRight, ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronDown, Clock3, Leaf, Mail, MapPin, Menu, Phone, ShieldCheck, ShoppingBag, Sparkles, Wrench, X, Gauge, Recycle, CircleCheck, Instagram, Facebook, Youtube } from 'lucide-react';
-import { BUSINESS, SERVICES } from './config';
-import './styles.css';
+import React, { useState } from "react";
+import { createRoot } from "react-dom/client";
+import {
+  ArrowDownRight,
+  ArrowRight,
+  ArrowUpRight,
+  CalendarDays,
+  Check,
+  ChevronDown,
+  Clock3,
+  Leaf,
+  Mail,
+  MapPin,
+  Menu,
+  Phone,
+  ShieldCheck,
+  ShoppingBag,
+  Sparkles,
+  Wrench,
+  X,
+  Gauge,
+  Recycle,
+  CircleCheck,
+  Instagram,
+  Facebook,
+  Youtube,
+} from "lucide-react";
+import { BUSINESS, SERVICES } from "./config";
+import "./styles.css";
 
 function Brand({ light = false }) {
-  return <a className={`brand ${light ? 'brand-light' : ''}`} href="#home" aria-label="AutoHub home"><span className="brand-mark"><span className="brand-swoosh" />AUTO<span>HUB</span></span><small>ACCESSORIES · SERVICE · SCRAP</small></a>;
+  return (
+    <a
+      className={`brand ${light ? "brand-light" : ""}`}
+      href="#home"
+      aria-label="AutoHub home"
+    >
+      <span className="brand-mark">
+        <span className="brand-swoosh" />
+        AUTO<span>HUB</span>
+      </span>
+      <small>ACCESSORIES · SERVICE · SCRAP</small>
+    </a>
+  );
 }
 
 function Header() {
   const [open, setOpen] = useState(false);
-  const links = [['Services', '#services'], ['Why AutoHub', '#why-us'], ['Our approach', '#approach'], ['Contact', '#contact']];
-  return <header className="header"><div className="container nav-wrap"><Brand /><button className="mobile-toggle" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button><nav className={open ? 'nav-links nav-open' : 'nav-links'}>{links.map(([name, href]) => <a key={name} href={href} onClick={() => setOpen(false)}>{name}</a>)}<a className="nav-cta" href="#booking" onClick={() => setOpen(false)}><CalendarDays size={16}/> Book a service <ArrowUpRight size={15}/></a></nav></div></header>;
+  const links = [
+    ["Services", "#services"],
+    ["Why AutoHub", "#why-us"],
+    ["Our approach", "#approach"],
+    ["Contact", "#contact"],
+  ];
+  return (
+    <header className="header">
+      <div className="container nav-wrap">
+        <Brand />
+        <button
+          className="mobile-toggle"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+        <nav className={open ? "nav-links nav-open" : "nav-links"}>
+          {links.map(([name, href]) => (
+            <a key={name} href={href} onClick={() => setOpen(false)}>
+              {name}
+            </a>
+          ))}
+          <a className="nav-cta" href="#booking" onClick={() => setOpen(false)}>
+            <CalendarDays size={16} /> Book a service <ArrowUpRight size={15} />
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
 }
 
 function Hero() {
-  return <section className="hero" id="home"><div className="hero-image"/><div className="hero-shade"/><div className="container hero-content"><div className="eyebrow"><span className="eyebrow-line"/> YOUR ONE-STOP AUTO SOLUTION</div><h1>Drive better.<br/><span>We’ll handle</span><br/>the rest.</h1><p className="hero-copy">From the little upgrades that feel like you to repairs you can trust — and responsible scrapping when it’s time to move on.</p><div className="hero-actions"><a className="button button-red" href="#booking">Book your service <ArrowRight size={17}/></a><a className="button button-ghost" href="#services">Explore services <ArrowDownRight size={17}/></a></div><div className="hero-proof"><div><ShieldCheck/><span><b>Work you can trust</b><small>Clear, honest service</small></span></div><div><Wrench/><span><b>Skilled technicians</b><small>Care in every detail</small></span></div><div><Leaf/><span><b>Mindful scrapping</b><small>Better for tomorrow</small></span></div></div></div><div className="hero-index"><span>01</span><i/><span>04</span></div><a className="scroll-cue" href="#services"><span>SCROLL TO DISCOVER</span><ArrowDownRight size={16}/></a></section>;
+  return (
+    <section className="hero" id="home">
+      <div className="hero-image" />
+      <div className="hero-shade" />
+      <div className="container hero-content">
+        <div className="eyebrow">
+          <span className="eyebrow-line" /> YOUR ONE-STOP AUTO SOLUTION
+        </div>
+        <h1>
+          Drive better.
+          <br />
+          <span>We’ll handle</span>
+          <br />
+          the rest.
+        </h1>
+        <p className="hero-copy">
+          From the little upgrades that feel like you to repairs you can trust —
+          and responsible scrapping when it’s time to move on.
+        </p>
+        <div className="hero-actions">
+          <a className="button button-red" href="#booking">
+            Book your service <ArrowRight size={17} />
+          </a>
+          <a className="button button-ghost" href="#services">
+            Explore services <ArrowDownRight size={17} />
+          </a>
+        </div>
+        <div className="hero-proof">
+          <div>
+            <ShieldCheck />
+            <span>
+              <b>Work you can trust</b>
+              <small>Clear, honest service</small>
+            </span>
+          </div>
+          <div>
+            <Wrench />
+            <span>
+              <b>Skilled technicians</b>
+              <small>Care in every detail</small>
+            </span>
+          </div>
+          <div>
+            <Leaf />
+            <span>
+              <b>Mindful scrapping</b>
+              <small>Better for tomorrow</small>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="hero-index">
+        <span>01</span>
+        <i />
+        <span>04</span>
+      </div>
+      <a className="scroll-cue" href="#services">
+        <span>SCROLL TO DISCOVER</span>
+        <ArrowDownRight size={16} />
+      </a>
+    </section>
+  );
 }
 
 function SectionHeading({ eyebrow, title, description, dark = false }) {
- return <div className={`section-heading ${dark ? 'heading-dark' : ''}`}><div className="eyebrow"><span className="eyebrow-line"/>{eyebrow}</div><h2>{title}</h2>{description && <p>{description}</p>}</div>;
+  return (
+    <div className={`section-heading ${dark ? "heading-dark" : ""}`}>
+      <div className="eyebrow">
+        <span className="eyebrow-line" />
+        {eyebrow}
+      </div>
+      <h2>{title}</h2>
+      {description && <p>{description}</p>}
+    </div>
+  );
 }
 
 function Services() {
- return <section className="services section-pad" id="services"><div className="container"><div className="services-top"><SectionHeading eyebrow="WHAT WE DO" title={<>Everything your car needs.<br/><span>All in one place.</span></>} description="Four ways we make car ownership simpler, safer and a little more enjoyable."/><div className="section-side-note"><span className="side-note-icon"><Sparkles size={18}/></span><p>Good service isn't just what we do.<br/><b>It's how we make you feel.</b></p></div></div><div className="service-grid">{SERVICES.map((s) => <article className="service-card" key={s.id}><a href="#booking" className="service-image" onClick={() => {}}><img src={s.image} alt={s.title} loading="lazy"/><span className="service-number">{s.number}</span><span className="image-arrow"><ArrowUpRight size={20}/></span></a><div className="service-body"><div className="service-title-row"><h3>{s.title}</h3>{s.id === 'accessories' ? <ShoppingBag/> : s.id === 'repair' ? <Wrench/> : s.id === 'scrapping' ? <Recycle/> : <Gauge/>}</div><p className="service-subtitle">{s.subtitle}</p><p className="service-description">{s.description}</p><div className="service-tags">{s.tags.map(t => <span key={t}>{t}</span>)}</div><a className="text-link" href="#booking" onClick={() => {}} data-service={s.id}>Explore service <ArrowRight size={15}/></a></div></article>)}</div></div></section>;
+  return (
+    <section className="services section-pad" id="services">
+      <div className="container">
+        <div className="services-top">
+          <SectionHeading
+            eyebrow="WHAT WE DO"
+            title={
+              <>
+                Everything your car needs.
+                <br />
+                <span>All in one place.</span>
+              </>
+            }
+            description="Four ways we make car ownership simpler, safer and a little more enjoyable."
+          />
+          <div className="section-side-note">
+            <span className="side-note-icon">
+              <Sparkles size={18} />
+            </span>
+            <p>
+              Good service isn't just what we do.
+              <br />
+              <b>It's how we make you feel.</b>
+            </p>
+          </div>
+        </div>
+        <div className="service-grid">
+          {SERVICES.map((s) => (
+            <article className="service-card" key={s.id}>
+              <a href="#booking" className="service-image" onClick={() => {}}>
+                <img src={s.image} alt={s.title} loading="lazy" />
+                <span className="service-number">{s.number}</span>
+                <span className="image-arrow">
+                  <ArrowUpRight size={20} />
+                </span>
+              </a>
+              <div className="service-body">
+                <div className="service-title-row">
+                  <h3>{s.title}</h3>
+                  {s.id === "accessories" ? (
+                    <ShoppingBag />
+                  ) : s.id === "repair" ? (
+                    <Wrench />
+                  ) : s.id === "scrapping" ? (
+                    <Recycle />
+                  ) : (
+                    <Gauge />
+                  )}
+                </div>
+                <p className="service-subtitle">{s.subtitle}</p>
+                <p className="service-description">{s.description}</p>
+                <div className="service-tags">
+                  {s.tags.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
+                <a
+                  className="text-link"
+                  href="#booking"
+                  onClick={() => {}}
+                  data-service={s.id}
+                >
+                  Explore service <ArrowRight size={15} />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function WhyUs() {
- const benefits = [ [ShieldCheck, 'No guesswork', 'Straightforward advice and clear next steps.'], [Wrench, 'People who know cars', 'Skilled hands and attention to the details.'], [CircleCheck, 'Value that makes sense', 'Practical recommendations, no pressure.'], [Clock3, 'Respect for your time', 'Convenient booking and updates you can count on.'], [Leaf, 'A lighter footprint', 'Responsible vehicle scrapping and recycling guidance.'] ];
- return <section className="why section-pad" id="why-us"><div className="why-photo"/><div className="container why-inner"><div className="why-copy"><SectionHeading dark eyebrow="THE AUTOHUB DIFFERENCE" title={<>Your vehicle.<br/><span>Our priority.</span></>} description="We believe looking after your car should feel straightforward — from the first hello to the final handover."/><a className="button button-red" href="#approach">Get to know us <ArrowRight size={16}/></a></div><div className="benefit-list">{benefits.map(([Icon, title, desc], i) => <div className="benefit" key={title}><span className="benefit-icon"><Icon size={21}/></span><div><h3>{title}</h3><p>{desc}</p></div><span className="benefit-index">0{i+1}</span></div>)}</div></div><div className="why-watermark">AUTOHUB / DRIVE BETTER</div></section>;
+  const benefits = [
+    [
+      ShieldCheck,
+      "No guesswork",
+      "Straightforward advice and clear next steps.",
+    ],
+    [
+      Wrench,
+      "People who know cars",
+      "Skilled hands and attention to the details.",
+    ],
+    [
+      CircleCheck,
+      "Value that makes sense",
+      "Practical recommendations, no pressure.",
+    ],
+    [
+      Clock3,
+      "Respect for your time",
+      "Convenient booking and updates you can count on.",
+    ],
+    [
+      Leaf,
+      "A lighter footprint",
+      "Responsible vehicle scrapping and recycling guidance.",
+    ],
+  ];
+  return (
+    <section className="why section-pad" id="why-us">
+      <div className="why-photo" />
+      <div className="container why-inner">
+        <div className="why-copy">
+          <SectionHeading
+            dark
+            eyebrow="THE AUTOHUB DIFFERENCE"
+            title={
+              <>
+                Your vehicle.
+                <br />
+                <span>Our priority.</span>
+              </>
+            }
+            description="We believe looking after your car should feel straightforward — from the first hello to the final handover."
+          />
+          <a className="button button-red" href="#approach">
+            Get to know us <ArrowRight size={16} />
+          </a>
+        </div>
+        <div className="benefit-list">
+          {benefits.map(([Icon, title, desc], i) => (
+            <div className="benefit" key={title}>
+              <span className="benefit-icon">
+                <Icon size={21} />
+              </span>
+              <div>
+                <h3>{title}</h3>
+                <p>{desc}</p>
+              </div>
+              <span className="benefit-index">0{i + 1}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="why-watermark">AUTOHUB / DRIVE BETTER</div>
+    </section>
+  );
 }
 
 function Approach() {
- const steps = [{n:'01', title:'Tell us what you need', desc:'Choose a service and share a few details.'}, {n:'02', title:'We’ll get in touch', desc:'Our team will confirm details and availability.'}, {n:'03', title:'Back on the road', desc:'Get the support you need, with no guesswork.'}];
- return <section className="approach section-pad" id="approach"><div className="container"><div className="approach-head"><SectionHeading eyebrow="SIMPLE BY DESIGN" title={<>A smoother ride starts<br/>with <span>three simple steps.</span></>} description="Less chasing. More clarity. A better experience from start to finish."/><div className="approach-stamp"><span>CAR CARE</span><Wrench size={25}/><span>MADE SIMPLE</span></div></div><div className="steps">{steps.map(s => <div className="step" key={s.n}><span className="step-number">{s.n}</span><div><h3>{s.title}</h3><p>{s.desc}</p></div><ArrowUpRight className="step-arrow" size={20}/></div>)}</div></div></section>;
+  const steps = [
+    {
+      n: "01",
+      title: "Tell us what you need",
+      desc: "Choose a service and share a few details.",
+    },
+    {
+      n: "02",
+      title: "We’ll get in touch",
+      desc: "Our team will confirm details and availability.",
+    },
+    {
+      n: "03",
+      title: "Back on the road",
+      desc: "Get the support you need, with no guesswork.",
+    },
+  ];
+  return (
+    <section className="approach section-pad" id="approach">
+      <div className="container">
+        <div className="approach-head">
+          <SectionHeading
+            eyebrow="SIMPLE BY DESIGN"
+            title={
+              <>
+                A smoother ride starts
+                <br />
+                with <span>three simple steps.</span>
+              </>
+            }
+            description="Less chasing. More clarity. A better experience from start to finish."
+          />
+          <div className="approach-stamp">
+            <span>CAR CARE</span>
+            <Wrench size={25} />
+            <span>MADE SIMPLE</span>
+          </div>
+        </div>
+        <div className="steps">
+          {steps.map((s) => (
+            <div className="step" key={s.n}>
+              <span className="step-number">{s.n}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+              <ArrowUpRight className="step-arrow" size={20} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Booking() {
- const [form, setForm] = useState({ name:'', email:'', phone:'', service:'', date:'', message:'' });
- const [status, setStatus] = useState({ state:'idle', message:'' });
- const update = e => setForm({ ...form, [e.target.name]: e.target.value });
- const submit = async e => {
-   e.preventDefault(); setStatus({state:'loading', message:'Sending your request…'});
-   try {
-     const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'}/api/v1/bookings`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(form) });
-     const result = await response.json().catch(() => ({}));
-     if (!response.ok) throw new Error(result.message || 'We couldn’t send your request just now. Please call us instead.');
-     setStatus({state:'success', message:'Thanks! Your booking request has been sent. We’ll be in touch soon.'});
-     setForm({name:'',email:'',phone:'',service:'',date:'',message:''});
-   } catch (err) {
-     setStatus({state:'error', message: err.message || 'Could not send your request. Please try again or contact us directly.'});
-   }
- };
- return <section className="booking section-pad" id="booking"><div className="container booking-layout"><div className="booking-intro"><div className="eyebrow"><span className="eyebrow-line"/> LET’S GET YOU MOVING</div><h2>Make time for<br/><span>better car care.</span></h2><p>Tell us a little about what you need. We’ll reach out to discuss the details and find a time that works for you.</p><div className="booking-note"><span><Check size={17}/></span><div><b>No commitment, just a conversation.</b><small>We’ll confirm availability before anything is booked.</small></div></div><div className="booking-contact"><span>Rather talk to a person?</span><a href={`tel:${BUSINESS.phoneLink}`}><Phone size={17}/>{BUSINESS.phoneDisplay}</a></div></div><div className="booking-form-card"><div className="form-top"><div><span className="form-kicker">APPOINTMENT REQUEST</span><h3>Let’s get started.</h3></div><CalendarDays size={25}/></div><form onSubmit={submit}><div className="form-grid"><label>Full name <em>*</em><input name="name" autoComplete="name" placeholder="Your name" value={form.name} onChange={update} required minLength={2} maxLength={100}/></label><label>Email address <em>*</em><input name="email" type="email" autoComplete="email" placeholder="you@example.com" value={form.email} onChange={update} required maxLength={254}/></label><label>Phone number <em>*</em><input name="phone" type="tel" autoComplete="tel" placeholder="Your contact number" value={form.phone} onChange={update} required minLength={7} maxLength={20}/></label><label>Service needed <em>*</em><span className="select-wrap"><select name="service" value={form.service} onChange={update} required><option value="">Choose a service</option>{SERVICES.map(s=><option value={s.title} key={s.id}>{s.title}</option>)}<option value="Other enquiry">Something else</option></select><ChevronDown size={16}/></span></label><label>Preferred date<input name="date" type="date" value={form.date} onChange={update} min={new Date().toISOString().slice(0,10)}/></label><label className="message-field">Anything we should know? <span className="optional">OPTIONAL</span><textarea name="message" value={form.message} onChange={update} placeholder="Tell us about your vehicle or what you need…" rows="3" maxLength={1500}/></label></div><button className="button button-red submit-button" type="submit" disabled={status.state==='loading'}>{status.state==='loading'?'Sending…':'Send booking request'} {status.state!=='loading' && <ArrowRight size={17}/>}</button>{status.message && <p className={`form-status ${status.state}`} role="status">{status.message}</p>}<p className="form-privacy">By submitting, you agree that AutoHub may contact you about this request.</p></form></div></div></section>;
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    date: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ state: "idle", message: "" });
+  const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const submit = async (e) => {
+    e.preventDefault();
+    setStatus({ state: "loading", message: "Sending your request…" });
+    try {
+      const response = await fetch(
+        `${import.meta.env.BE_URL || "http://localhost:8080"}/api/v1/bookings`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        },
+      );
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok)
+        throw new Error(
+          result.message ||
+            "We couldn’t send your request just now. Please call us instead.",
+        );
+      setStatus({
+        state: "success",
+        message:
+          "Thanks! Your booking request has been sent. We’ll be in touch soon.",
+      });
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        date: "",
+        message: "",
+      });
+    } catch (err) {
+      setStatus({
+        state: "error",
+        message:
+          err.message ||
+          "Could not send your request. Please try again or contact us directly.",
+      });
+    }
+  };
+  return (
+    <section className="booking section-pad" id="booking">
+      <div className="container booking-layout">
+        <div className="booking-intro">
+          <div className="eyebrow">
+            <span className="eyebrow-line" /> LET’S GET YOU MOVING
+          </div>
+          <h2>
+            Make time for
+            <br />
+            <span>better car care.</span>
+          </h2>
+          <p>
+            Tell us a little about what you need. We’ll reach out to discuss the
+            details and find a time that works for you.
+          </p>
+          <div className="booking-note">
+            <span>
+              <Check size={17} />
+            </span>
+            <div>
+              <b>No commitment, just a conversation.</b>
+              <small>
+                We’ll confirm availability before anything is booked.
+              </small>
+            </div>
+          </div>
+          <div className="booking-contact">
+            <span>Rather talk to a person?</span>
+            <a href={`tel:${BUSINESS.phoneLink}`}>
+              <Phone size={17} />
+              {BUSINESS.phoneDisplay}
+            </a>
+          </div>
+        </div>
+        <div className="booking-form-card">
+          <div className="form-top">
+            <div>
+              <span className="form-kicker">APPOINTMENT REQUEST</span>
+              <h3>Let’s get started.</h3>
+            </div>
+            <CalendarDays size={25} />
+          </div>
+          <form onSubmit={submit}>
+            <div className="form-grid">
+              <label>
+                Full name <em>*</em>
+                <input
+                  name="name"
+                  autoComplete="name"
+                  placeholder="Your name"
+                  value={form.name}
+                  onChange={update}
+                  required
+                  minLength={2}
+                  maxLength={100}
+                />
+              </label>
+              <label>
+                Email address <em>*</em>
+                <input
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  value={form.email}
+                  onChange={update}
+                  required
+                  maxLength={254}
+                />
+              </label>
+              <label>
+                Phone number <em>*</em>
+                <input
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="Your contact number"
+                  value={form.phone}
+                  onChange={update}
+                  required
+                  minLength={7}
+                  maxLength={20}
+                />
+              </label>
+              <label>
+                Service needed <em>*</em>
+                <span className="select-wrap">
+                  <select
+                    name="service"
+                    value={form.service}
+                    onChange={update}
+                    required
+                  >
+                    <option value="">Choose a service</option>
+                    {SERVICES.map((s) => (
+                      <option value={s.title} key={s.id}>
+                        {s.title}
+                      </option>
+                    ))}
+                    <option value="Other enquiry">Something else</option>
+                  </select>
+                  <ChevronDown size={16} />
+                </span>
+              </label>
+              <label>
+                Preferred date
+                <input
+                  name="date"
+                  type="date"
+                  value={form.date}
+                  onChange={update}
+                  min={new Date().toISOString().slice(0, 10)}
+                />
+              </label>
+              <label className="message-field">
+                Anything we should know?{" "}
+                <span className="optional">OPTIONAL</span>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={update}
+                  placeholder="Tell us about your vehicle or what you need…"
+                  rows="3"
+                  maxLength={1500}
+                />
+              </label>
+            </div>
+            <button
+              className="button button-red submit-button"
+              type="submit"
+              disabled={status.state === "loading"}
+            >
+              {status.state === "loading" ? "Sending…" : "Send booking request"}{" "}
+              {status.state !== "loading" && <ArrowRight size={17} />}
+            </button>
+            {status.message && (
+              <p className={`form-status ${status.state}`} role="status">
+                {status.message}
+              </p>
+            )}
+            <p className="form-privacy">
+              By submitting, you agree that AutoHub may contact you about this
+              request.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Contact() {
- return <section className="contact section-pad" id="contact"><div className="container contact-layout"><div><div className="eyebrow"><span className="eyebrow-line"/> COME SAY HELLO</div><h2>Good conversations.<br/><span>Better journeys.</span></h2><p className="contact-lede">Questions about a service, a part or the right next step for your vehicle? We’re happy to help.</p><div className="contact-items"><a href={`tel:${BUSINESS.phoneLink}`} className="contact-item"><span className="contact-icon"><Phone/></span><span><small>GIVE US A CALL</small><b>{BUSINESS.phoneDisplay}</b><em>{BUSINESS.hours}</em></span><ArrowUpRight className="contact-arrow"/></a><a href={`mailto:${BUSINESS.email}`} className="contact-item"><span className="contact-icon"><Mail/></span><span><small>DROP US A LINE</small><b>{BUSINESS.email}</b><em>We’ll get back to you as soon as we can.</em></span><ArrowUpRight className="contact-arrow"/></a><a href={BUSINESS.mapsUrl} target="_blank" rel="noreferrer" className="contact-item"><span className="contact-icon"><MapPin/></span><span><small>FIND OUR WORKSHOP</small><b>{BUSINESS.address}</b><em>Open directions in Google Maps</em></span><ArrowUpRight className="contact-arrow"/></a></div></div><div className="map-card"><div className="map-art"><div className="map-road road-a"/><div className="map-road road-b"/><div className="map-road road-c"/><div className="map-road road-d"/><div className="map-green green-a"/><div className="map-green green-b"/><div className="map-pin"><MapPin size={21} fill="currentColor"/><span>AutoHub</span></div><div className="map-label label-one">MAIN STREET</div><div className="map-label label-two">SERVICE LANE</div></div><a className="map-directions" href={BUSINESS.mapsUrl} target="_blank" rel="noreferrer">Get directions <ArrowUpRight size={16}/></a><div className="map-caption"><span><MapPin size={17}/>{BUSINESS.address}</span><span className="map-caption-tag">VISIT US <ArrowRight size={13}/></span></div></div></div></section>;
+  return (
+    <section className="contact section-pad" id="contact">
+      <div className="container contact-layout">
+        <div>
+          <div className="eyebrow">
+            <span className="eyebrow-line" /> COME SAY HELLO
+          </div>
+          <h2>
+            Good conversations.
+            <br />
+            <span>Better journeys.</span>
+          </h2>
+          <p className="contact-lede">
+            Questions about a service, a part or the right next step for your
+            vehicle? We’re happy to help.
+          </p>
+          <div className="contact-items">
+            <a href={`tel:${BUSINESS.phoneLink}`} className="contact-item">
+              <span className="contact-icon">
+                <Phone />
+              </span>
+              <span>
+                <small>GIVE US A CALL</small>
+                <b>{BUSINESS.phoneDisplay}</b>
+                <em>{BUSINESS.hours}</em>
+              </span>
+              <ArrowUpRight className="contact-arrow" />
+            </a>
+            <a href={`mailto:${BUSINESS.email}`} className="contact-item">
+              <span className="contact-icon">
+                <Mail />
+              </span>
+              <span>
+                <small>DROP US A LINE</small>
+                <b>{BUSINESS.email}</b>
+                <em>We’ll get back to you as soon as we can.</em>
+              </span>
+              <ArrowUpRight className="contact-arrow" />
+            </a>
+            <a
+              href={BUSINESS.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="contact-item"
+            >
+              <span className="contact-icon">
+                <MapPin />
+              </span>
+              <span>
+                <small>FIND OUR WORKSHOP</small>
+                <b>{BUSINESS.address}</b>
+                <em>Open directions in Google Maps</em>
+              </span>
+              <ArrowUpRight className="contact-arrow" />
+            </a>
+          </div>
+        </div>
+        <div className="map-card">
+          <div className="map-art">
+            <div className="map-road road-a" />
+            <div className="map-road road-b" />
+            <div className="map-road road-c" />
+            <div className="map-road road-d" />
+            <div className="map-green green-a" />
+            <div className="map-green green-b" />
+            <div className="map-pin">
+              <MapPin size={21} fill="currentColor" />
+              <span>AutoHub</span>
+            </div>
+            <div className="map-label label-one">MAIN STREET</div>
+            <div className="map-label label-two">SERVICE LANE</div>
+          </div>
+          <a
+            className="map-directions"
+            href={BUSINESS.mapsUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Get directions <ArrowUpRight size={16} />
+          </a>
+          <div className="map-caption">
+            <span>
+              <MapPin size={17} />
+              {BUSINESS.address}
+            </span>
+            <span className="map-caption-tag">
+              VISIT US <ArrowRight size={13} />
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Footer() {
- return <footer className="footer"><div className="container"><div className="footer-main"><div className="footer-brand"><Brand light/><p>Care for the car.<br/>Confidence for the road.</p></div><div className="footer-links"><span>EXPLORE</span><a href="#services">Our services</a><a href="#why-us">Why AutoHub</a><a href="#approach">Our approach</a><a href="#booking">Book a service</a></div><div className="footer-links"><span>GET IN TOUCH</span><a href={`tel:${BUSINESS.phoneLink}`}>{BUSINESS.phoneDisplay}</a><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a><a href={BUSINESS.mapsUrl} target="_blank" rel="noreferrer">Find our workshop <ArrowUpRight size={13}/></a></div><div className="footer-social"><span>FOLLOW THE JOURNEY</span><div><a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noreferrer"><Instagram/></a><a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noreferrer"><Facebook/></a><a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noreferrer"><Youtube/></a></div><a className="footer-book" href="#booking">Let’s get you moving <ArrowUpRight size={15}/></a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} AutoHub. All rights reserved.</span><span>BUILT FOR THE LOVE OF THE DRIVE <span className="red-dot">●</span></span></div></div></footer>;
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-main">
+          <div className="footer-brand">
+            <Brand light />
+            <p>
+              Care for the car.
+              <br />
+              Confidence for the road.
+            </p>
+          </div>
+          <div className="footer-links">
+            <span>EXPLORE</span>
+            <a href="#services">Our services</a>
+            <a href="#why-us">Why AutoHub</a>
+            <a href="#approach">Our approach</a>
+            <a href="#booking">Book a service</a>
+          </div>
+          <div className="footer-links">
+            <span>GET IN TOUCH</span>
+            <a href={`tel:${BUSINESS.phoneLink}`}>{BUSINESS.phoneDisplay}</a>
+            <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+            <a href={BUSINESS.mapsUrl} target="_blank" rel="noreferrer">
+              Find our workshop <ArrowUpRight size={13} />
+            </a>
+          </div>
+          <div className="footer-social">
+            <span>FOLLOW THE JOURNEY</span>
+            <div>
+              <a
+                href="https://instagram.com"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Instagram />
+              </a>
+              <a
+                href="https://facebook.com"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Facebook />
+              </a>
+              <a
+                href="https://youtube.com"
+                aria-label="YouTube"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Youtube />
+              </a>
+            </div>
+            <a className="footer-book" href="#booking">
+              Let’s get you moving <ArrowUpRight size={15} />
+            </a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>
+            © {new Date().getFullYear()} AutoHub. All rights reserved.
+          </span>
+          <span>
+            BUILT FOR THE LOVE OF THE DRIVE <span className="red-dot">●</span>
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
 }
 
 function App() {
- return <><Header/><main><Hero/><Services/><WhyUs/><Approach/><Booking/><Contact/></main><Footer/><a className="floating-book" href="#booking"><CalendarDays size={17}/><span>Book now</span></a></>;
+  return (
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Services />
+        <WhyUs />
+        <Approach />
+        <Booking />
+        <Contact />
+      </main>
+      <Footer />
+      <a className="floating-book" href="#booking">
+        <CalendarDays size={17} />
+        <span>Book now</span>
+      </a>
+    </>
+  );
 }
 
-createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);
+createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
