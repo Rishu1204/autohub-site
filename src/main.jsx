@@ -371,7 +371,7 @@ function Booking() {
     setStatus({ state: "loading", message: "Sending your request…" });
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BE_URL || "http://localhost:8080"}/api/v1/bookings`,
+        `${import.meta.env.BE_URL || "http://localhost:8080"}/api/v1/bookings`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
